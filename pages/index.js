@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { createUseStyles } from 'react-jss'
+import Link from 'next/link';
 import MyDynamicComponent from '../components/MyDynamicComponent';
 import MyStaticComponent from '../components/MyStaticComponent';
 
@@ -20,20 +21,27 @@ function Index() {
 
   const [color, setColor] = useState('red');
   const toggleColor = () => setColor(color === 'red' ? 'blue' : 'red');
-
+  console.log(color);
   return (
-    <div className={classes.container}>
-      <h1 className={classes.header}>
-        Example on how to use react-jss with Next.js
-      </h1>
-      <section>
-        <button onClick={toggleColor}>Toggle Box Color</button>
-        <MyDynamicComponent color={color} />
-      </section>
-      <section>
-        <MyStaticComponent />
-      </section>
-    </div>
+    <>
+      <nav>
+        <Link href="/about">
+          <a>About</a>
+        </Link>
+      </nav>
+      <div className={classes.container}>
+        <h1 className={classes.header}>
+          Example on how to use react-jss with Next.js
+        </h1>
+        <section>
+          <button onClick={toggleColor}>Toggle Box Color</button>
+          <MyDynamicComponent color={color} />
+        </section>
+        <section>
+          <MyStaticComponent />
+        </section>
+      </div>
+    </>
   )
 }
 
