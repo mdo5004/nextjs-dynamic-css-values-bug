@@ -6,8 +6,8 @@ import { createUseStyles } from 'react-jss';
 const useStyles = createUseStyles({
   root: {
     border: '1px solid black',
-    backgroundColor: ({ color }) => color,
-    color: ({ color }) => color === 'blue' ? 'white' : 'black',
+    backgroundColor: 'blue',
+    color: 'white',
     padding: 10,
     textAlign: 'center',
   },
@@ -19,12 +19,12 @@ const useStyles = createUseStyles({
   },
 });
 
-export default function MyDynamicComponent(props) {
+export default function MyStaticComponent(props) {
   const { className } = props;
   const classes = useStyles(props);
   return <div className={clsx(classes.root, className)}>
     <h1>
-      {`I'm dynamic. My background color should be ${props.color}, but you can change it.`}
+      {`I'm static. My background color should always be blue.`}
     </h1>
     <div className={classes.other}>
       My background color should always be green.
@@ -32,10 +32,10 @@ export default function MyDynamicComponent(props) {
   </div>;
 }
 
-MyDynamicComponent.defaultProps = {
+MyStaticComponent.defaultProps = {
   className: '',
 };
 
-MyDynamicComponent.propTypes = {
+MyStaticComponent.propTypes = {
   className: PropTypes.string,
 };

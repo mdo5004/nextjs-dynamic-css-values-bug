@@ -8,6 +8,7 @@ export default class JssDocument extends Document {
     const originalRenderPage = ctx.renderPage
     ctx.renderPage = () =>
       originalRenderPage({
+        // eslint-disable-next-line
         enhanceApp: (App) => (props) =>
         (
           <JssProvider registry={registry} generateId={generateId}>
